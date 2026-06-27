@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="PcgRandom" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+		PCG Random Number Generator
+	</brief_description>
+	<description>
+		A Permuted Congruential Generator which creates random numbers. All methods use purely integer math, therefore the same seed is guaranteed to generate the same sequence of numbers regardless of what machine it is running on.
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="set_seed">
+			<return type="void" />
+			<param index="0" name="seed" type="int" />
+			<description>
+				Sets the seed which all random numbers will be generated from.
+			</description>
+		</method>
+		<method name="next">
+			<return type="int" />
+			<description>
+				Generates an unsigned 32 bit integer. This is based on the current seed value and every call to this method will increment the seed value.
+			</description>
+		</method>
+		<method name="gaussian">
+			<return type="int" />
+			<param index="0" name="mean" type="int" />
+			<param index="1" name="stddev" type="int" />
+			<description>
+				Uses the [code]next()[/code] method under the hood to generate a random number, then fits that number to a gaussian normal distribution based on the given mean and standard deviation. NOTE: because this works exclusively with int type, values are rounded TOWARDS the mean. This means that if you provide a low standard deviation, the real stddev of the generated numbers will be smaller (e.g. given stddev = 2, results will really have a stddev of ~1.6). A workaround for this is to multiply all of your numbers by some factor of 10, as this issue becomes unnoticable for stddev over 100.
+			</description>
+		</method>
+	</methods>
+</class>
