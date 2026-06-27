@@ -1,5 +1,5 @@
 {
-	"_": "This is an example build profile and not used by default. See the SConstruct file for more information.",
+	"_": "Minimum classes required for compiling this extension.",
 	"type": "feature_profile",
 	"enabled_classes": [
 		"Node",
