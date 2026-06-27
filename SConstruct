@@ -6,7 +6,7 @@ from methods import print_error
 
 
 libname = "pcg-random"
-projectdir = "project"
+projectdir = "project/addons/pcg_random"
 
 localEnv = Environment(tools=["default"], PLATFORM="")
 

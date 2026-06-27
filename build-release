@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+# Platforms to build
+PLATFORMS=(
+#   macos
+#   ios
+  windows
+  linux
+  android
+  web
+)
+
+# Architecture lists
+LINUX_ARCHS=(
+  x86_64
+  arm64
+  rv64
+)
+
+ANDROID_ARCHS=(
+  x86_64
+  arm64
+)
+
+WINDOWS_ARCHS=(
+  x86_64
+)
+
+# Build targets
+TARGETS=(
+  template_debug
+  template_release
+)
+
+for platform in "${PLATFORMS[@]}"; do
+  for target in "${TARGETS[@]}"; do
+    case "$platform" in
+      linux)
+        for arch in "${LINUX_ARCHS[@]}"; do
+          echo "Building $platform $target $arch"
+          scons platform="$platform" optimize=size target="$target" arch="$arch"
+        done
+        ;;
+      android)
+        for arch in "${ANDROID_ARCHS[@]}"; do
+          echo "Building $platform $target $arch"
+          scons platform="$platform" optimize=size target="$target" arch="$arch"
+        done
+        ;;
+      windows)
+        for arch in "${WINDOWS_ARCHS[@]}"; do
+          echo "Building $platform $target $arch"
+          scons platform="$platform" optimize=size target="$target" arch="$arch"
+        done
+        ;;
+      *)
+        echo "Building $platform $target"
+        scons platform="$platform" optimize=size target="$target"
+        ;;
+    esac
+  done
+done

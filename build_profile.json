@@ -5,6 +5,7 @@
 		"Node",
 		"Object",
 		"RefCounted",
-		"Resource"
+		"Resource",
+		"OS"
 	]
 }
